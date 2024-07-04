@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calorie Tracker</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden p-6">
+        <h1 class="text-2xl font-bold mb-4">Food Items</h1>
+        <ul class="mb-4">
+            {% for food in foods %}
+            <li class="text-gray-800">{{ food.name }} - {{ food.calories }} calories</li>
+            {% endfor %}
+        </ul>
+        <p class="text-gray-700">Total Calories: {{ total_calories }}</p>
+        <div class="mt-4">
+            <a href="{% url 'add_food' %}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded inline-block">
+                Add Food Item
+            </a>
+            <form action="{% url 'reset_calories' %}" method="post" class="inline-block ml-2">
+                {% csrf_token %}
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                    Reset Calories
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Food Item</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden p-6">
+        <h1 class="text-2xl font-bold mb-4">Remove Food Item</h1>
+        <p class="text-gray-800">Are you sure you want to remove <span class="font-bold">{{ food.name }}</span>?</p>
+        <form action="{% url 'remove_food' food.id %}" method="post" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                Remove
+            </button>
+        </form>
+    </div>
+</body>
+</html>

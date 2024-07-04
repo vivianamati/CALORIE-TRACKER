@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Calories</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden p-6">
+        <h1 class="text-2xl font-bold mb-4">Reset Calories</h1>
+        <p class="text-gray-800">Are you sure you want to reset all calories?</p>
+        <form action="{% url 'reset_calories' %}" method="post" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+                Reset
+            </button>
+        </form>
+    </div>
+</body>
+</html>
